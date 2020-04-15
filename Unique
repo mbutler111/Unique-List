@@ -1,0 +1,32 @@
+def appList(mainList, addList):
+    mainList.append([])
+    for i in range(0,len(addList)):
+        mainList[len(mainList)-1].append(addList[i])
+
+def swapInd(swapList, ind1, ind2):
+    temp = swapList[ind1]
+    swapList[ind1] = swapList[ind2]
+    swapList[ind2] = temp
+
+def uniqueCombo(numsList):
+    newList = []
+    curSwap = 0
+    maxSwap = len(numsList) - 1
+    
+    for i in range(0,len(numsList)*(len(numsList)-1)):
+        appList(newList, numsList)
+        # print(newList)
+        if(curSwap < maxSwap):
+            swapInd(numsList, curSwap, curSwap+1)
+        else:
+            curSwap = 0
+            swapInd(numsList, curSwap, curSwap+1)
+        curSwap += 1
+            
+    return newList
+    
+list1 = [5,27,3,4]
+combo = []
+combo = uniqueCombo(list1)
+for i in range(0,len(combo)):
+    print(combo[i])
